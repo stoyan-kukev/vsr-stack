@@ -1,8 +1,8 @@
-import { Button } from './components/ui/button'
+import { UserNav } from './components/UserNav'
 
 function App() {
   return (
-    <Button>Click me</Button>
+    <UserNav />
   )
 }
 
