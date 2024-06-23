@@ -14,7 +14,23 @@ import {
 } from "@/components/ui/navigation-menu";
 import { UserNav } from "./UserNav";
 import { ModeToggle } from "./mode-toggle";
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
 
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
 const components: { title: string; href: string; description: string }[] = [
 	{
 		title: "Scroll-area",
@@ -39,7 +55,7 @@ export function NavBar() {
 	return (
 		<div className="flex justify-between m-3">
 			<ModeToggle />
-			<NavigationMenu>
+			<NavigationMenu className="hidden md:block">
 				<NavigationMenuList>
 					<NavigationMenuItem>
 						<NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
@@ -95,6 +111,33 @@ export function NavBar() {
 					</NavigationMenuItem>
 				</NavigationMenuList>
 			</NavigationMenu>
+			<div className="md:hidden">
+				<Sheet>
+					<SheetTrigger>
+						<Button variant={"outline"}>Menu</Button>
+					</SheetTrigger>
+					<SheetContent>
+						<SheetHeader>
+							<SheetTitle>Links</SheetTitle>
+							<Separator />
+
+							<SheetDescription>
+								<Accordion type="single" collapsible className="w-full">
+									{components.map((component) => (
+										<AccordionItem value={component.title}>
+											<AccordionTrigger>{component.title}</AccordionTrigger>
+											<AccordionContent>
+												{component.description}
+											</AccordionContent>
+										</AccordionItem>
+									))}
+								</Accordion>
+							</SheetDescription>
+							<Button variant={"outline"}>Documentation</Button>
+						</SheetHeader>
+					</SheetContent>
+				</Sheet>
+			</div>
 			<UserNav />
 		</div>
 	);
