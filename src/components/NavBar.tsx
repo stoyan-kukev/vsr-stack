@@ -31,23 +31,22 @@ import {
 } from "@/components/ui/accordion";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
+import { Link } from "./Link";
 const components: { title: string; href: string; description: string }[] = [
 	{
-		title: "Scroll-area",
-		href: "/docs/primitives/scroll-area",
-		description: "Visually or semantically separates content.",
+		title: "Sign In",
+		href: "/signin",
+		description: "Sign in to use all the features of our app!",
 	},
 	{
-		title: "Tabs",
-		href: "/docs/primitives/tabs",
-		description:
-			"A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+		title: "Home",
+		href: "/",
+		description: "Home sweat home",
 	},
 	{
-		title: "Tooltip",
-		href: "/docs/primitives/tooltip",
-		description:
-			"A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+		title: "404",
+		href: "/404",
+		description: "Going to void",
 	},
 ];
 
@@ -91,12 +90,14 @@ export function NavBar() {
 						<NavigationMenuContent>
 							<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
 								{components.map((component) => (
-									<ListItem
-										key={component.title}
-										title={component.title}
-										href={component.href}
-									>
-										{component.description}
+									<ListItem title={component.title}>
+										<Link
+											key={component.title}
+											title={component.title}
+											href={component.href}
+										>
+											{component.description}
+										</Link>
 									</ListItem>
 								))}
 							</ul>
